@@ -17,6 +17,7 @@ namespace WindowsFormsApplication3
         {
             InitializeComponent();
         }
+        public Klasa_ochrony klasa = new Klasa_ochrony(60, 20);
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -34,11 +35,6 @@ namespace WindowsFormsApplication3
             pk6 = Vector3.Normalize(pk3 - Vector3.MidPoint(pk1, pk2));
             DxfDocument dxf = new DxfDocument();
             netDxf.Entities.Point punkt;
-            // add your entities here
-            
-            // save to file
-
-
 
             double x = Math.Min(pk1.X,Math.Min(pk2.X,pk3.X));
             double y =  Math.Min(pk1.Y,Math.Min(pk2.Y,pk3.Y));
@@ -84,6 +80,30 @@ namespace WindowsFormsApplication3
 
             dxf.Save("test_2.dxf");
             
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "Klasa I")
+            {
+                klasa.rad = 20;
+                klasa.oczko_siatki = 5;
+            }
+            if (comboBox1.Text == "Klasa II")
+            {
+                klasa.rad = 30;
+                klasa.oczko_siatki = 10;
+            }
+            if (comboBox1.Text == "Klasa III")
+            {
+                klasa.rad = 45;
+                klasa.oczko_siatki = 15;
+            } 
+            if (comboBox1.Text == "Klasa IV")
+            {
+                klasa.rad = 60;
+                klasa.oczko_siatki = 20;
+            }
         }
     }
 }
